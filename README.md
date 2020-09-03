@@ -1,1 +1,2 @@
-# umich_dvc_lesson
+# Introduction to DVC pipelines
+
