@@ -1,10 +1,13 @@
 import pickle
 from sklearn.datasets import make_regression
 import json
-model = pickle.load(open("model.pkl", "rb"))
+import pandas as pd
 
-# Make some new random data to evaluate on
-X_test, y_test = make_regression(1000,n_features = 10)
+model = pickle.load(open("models/model.pkl", "rb"))
+
+# Load the test data
+X_test = pd.read_csv("data/test_features.csv")
+y_test = pd.read_csv("data/test_y.csv")
 
 # Test on the model
 test_r2 = model.score(X_test, y_test)
