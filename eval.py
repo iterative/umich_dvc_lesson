@@ -10,7 +10,7 @@ model = pickle.load(open("models/model.pkl", "rb"))
 
 # Load the test data
 X_test = pd.read_csv("data/test_features.csv")
-y_test = pd.read_csv("data/test_y.csv").values
+y_test = pd.read_csv("data/test_y.csv").iloc[:, 0].values
 
 # Test on the model
 y_hat = model.predict(X_test)
@@ -31,7 +31,7 @@ title_fs=16
 
 ax = sns.scatterplot(x="true", y="pred",data=res_df)
 ax.set_aspect('equal')
-ax.set_xlabel('True y',fontsize = axis_fs) 
+ax.set_xlabel('True y',fontsize = axis_fs)
 ax.set_ylabel('Predicted y', fontsize = axis_fs)
 ax.set_title('Residuals', fontsize = title_fs)
 
@@ -41,4 +41,4 @@ plt.ylim((-1000,1000))
 plt.xlim((-1000,1000))
 
 plt.tight_layout()
-plt.savefig("residuals.png",dpi=120) 
+plt.savefig("residuals.png",dpi=120)
